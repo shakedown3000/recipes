@@ -1,4 +1,4 @@
-import Recipes from "../components/Recipes";
+import Recipes from "../components/Navbar/Rezepte/Recipes";
 
 const Home = () => {
   return (

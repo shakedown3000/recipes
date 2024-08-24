@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import supabaseClient from "../lib/supabaseClients";
+import supabaseClient from "../../../lib/supabaseClients";
 import "./Recipes.css";
 
 type Recipe = {

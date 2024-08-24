@@ -1,6 +1,11 @@
+.yellow_bar {
+  height: 50px;
+  width: 100%;
+  background-color: #ffdb63;
+}
 .app-header {
-  background-color: #f1d276;
-  padding: 10px 20px;
+  background-color: white;
+  padding: 20px 300px;
   display: flex;
   align-items: center;
   justify-content: space-between;

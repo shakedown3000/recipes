@@ -1,7 +1,7 @@
-import "./LoginPage.css"
+import "./LoginPage.css";
 
 const Login = () => {
-    return (  );
-}
- 
+  return <></>;
+};
+
 export default Login;
