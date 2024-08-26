@@ -58,6 +58,10 @@
   margin: 5px 0;
 }
 
+.recipe_button {
+  margin-top: 20px;
+}
+
 @media (max-width: 1200px) {
   .recipe-list-container {
     grid-template-columns: repeat(2, 1fr);

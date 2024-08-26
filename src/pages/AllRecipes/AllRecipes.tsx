@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./AllRecipes.css";
 import supabaseClient from "../../lib/supabaseClients";
+import { Link } from "react-router-dom";
 
 type Recipe = {
   id: string;
@@ -51,6 +52,9 @@ const AllRecipes = () => {
               <strong>{recipe.name}</strong>
               <p>{recipe.description}</p>
               <p>Bewertung: {recipe.rating}</p>
+              <button className="recipe_button">
+                <Link to={`/recipes/${recipe.id}`}>Zum Rezept</Link>
+              </button>
             </div>
           ))}
       </div>
