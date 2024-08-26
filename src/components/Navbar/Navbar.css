@@ -3,11 +3,29 @@
   width: 100%;
   background-color: #ffdb63;
 }
+
 .app-header {
+  padding: 25px 0;
+  width: 100%;
   background-color: white;
-  padding: 20px 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  height: 80px;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav_wrapper {
+  width: 1200px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }

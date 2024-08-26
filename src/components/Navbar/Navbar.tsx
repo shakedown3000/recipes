@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+import LoginStatus from "../LoginStatus/LoginStatus";
 import "./Navbar.css";
 
 const Navbar = () => {
@@ -5,10 +7,24 @@ const Navbar = () => {
     <>
       <div className="yellow_bar"></div>
       <header className="app-header">
-        <img src="/public/rezeptwelt logo.png" alt="" />
-        <p>Logo Rezeptwelt</p>
-        <nav className="navbar">Home Rezepte Über Uns</nav>
-        <p>{/* <LoginStatus /> */} Login</p>
+        <div className="nav_wrapper">
+          <NavLink to="/">
+            <img
+              src="/public/rezeptwelt logo.png"
+              alt="logo"
+              className="logo"
+            />
+          </NavLink>
+          <nav className="navbar">
+            <NavLink to="/">Home</NavLink>
+            <NavLink to="/allrecipes">Alle Rezepte</NavLink>
+            <NavLink to="/aboutus">Über Uns</NavLink>{" "}
+            <p>
+              <LoginStatus />
+              <NavLink to="./login">Login</NavLink>
+            </p>
+          </nav>
+        </div>
       </header>
     </>
   );
