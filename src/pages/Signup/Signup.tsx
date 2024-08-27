@@ -1,5 +1,6 @@
 import { useState } from "react";
 import supabaseClient from "../../lib/supabaseClients";
+import "./Signup.css";
 
 const SignupPage = () => {
   const [email, setEmail] = useState<string>("");
@@ -15,15 +16,9 @@ const SignupPage = () => {
     setErrorMessage(null);
     setsuccessMessage(null);
 
-    // es ist nicht möglich selbst definierte Spalten bei supabase im Standard reinzugeben
-    // mehr Info in der Supabase Doku unter Managing User Data!
     const signupResponse = await supabaseClient.auth.signUp({
       email,
       password,
-      // Die Option brauche ich, wenn ich Zusatzfelder bei deer Registrierung habe
-      // diese müssen unter options.data
-      // der Spaltenname in der Tabelle: first_name
-      // der Wert aus unserem Formular: firsName, den der User angegeben hat
       options: {
         data: {
           first_name: firstName,
@@ -65,13 +60,18 @@ const SignupPage = () => {
           placeholder="Enter your last name"
           required
         />
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Enter your password"
+          required
+        />
+        <button type="submit">Sign Up</button>
       </form>
+
       {errorMessage && <p className="error-message">{errorMessage}</p>}
       {successMessage && <p className="success-message">{successMessage}</p>}
-      <button>Login</button>
-      <div className="reset_password">
-        <button>Forgot password</button>
-      </div>
     </div>
   );
 };
