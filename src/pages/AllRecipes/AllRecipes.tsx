@@ -35,7 +35,7 @@ const AllRecipes = () => {
 
   return (
     <section className="allRecipes">
-      <h2>Browse all recipes</h2>
+      <h1>Alle Rezepte</h1>
 
       <div className="recipe-list-container">
         {loading && <p>Loading...</p>}

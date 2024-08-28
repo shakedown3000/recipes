@@ -5,12 +5,15 @@ import supabaseClient from "../lib/supabaseClients";
 interface IUserContext {
   user: User | null;
   setUser: React.Dispatch<React.SetStateAction<User | null>>;
+  loading: boolean;
 }
 
 export const UserContext = createContext<IUserContext | null>(null);
 
 export const UserProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
+  // Verhindert dass beim neuladen der seite der state verloren geht
+  const [loading, setLoading] = useState<boolean>(true);
 
   // wird genau einmal beim Neuladen der Seite aufgerufen
   useEffect(() => {
@@ -32,7 +35,7 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
   // ? durch an den UserContext.Provider
 
   return (
-    <UserContext.Provider value={{ user, setUser }}>
+    <UserContext.Provider value={{ user, loading, setUser }}>
       {children}
     </UserContext.Provider>
   );

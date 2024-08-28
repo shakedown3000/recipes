@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import supabaseClient from "../../lib/supabaseClients";
 import { useUserContext } from "../../Context/UserContext";
 import { Profile } from "../../types/supabase-types-own";
+import "./ProfilePage.css";
 
 const ProfilePage = () => {
   const userContext = useUserContext();
@@ -32,11 +33,13 @@ const ProfilePage = () => {
         setProfile(profileResponse.data);
       }
     };
+    console.log("Profile", profile);
     fetchUserProfile();
   }, [user]);
 
   return (
     <div className="profile-page">
+      <p>This is a profile page</p>
       <p>
         <strong>E-Mail</strong>
         {user ? user.email : ""}

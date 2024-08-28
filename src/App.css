@@ -1,11 +1,28 @@
-.app {
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app-content {
+  margin: 0 auto;
+  width: 1200px;
+} */
+
+/* .app {
   font-family: Arial, sans-serif;
   color: #333;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-}
-
+} */
+/* 
 .app-menu {
   display: flex;
   align-items: center;
@@ -13,8 +30,4 @@
   justify-content: flex-end;
 }
 
-.app-content {
-  margin: 0 auto;
-  width: 1200px;
-  border: 1px solid yellow;
-}
+

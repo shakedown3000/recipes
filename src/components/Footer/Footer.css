@@ -1,4 +1,7 @@
 .footer_wrapper {
+  width: 100%;
+  position: relative;
+  bottom: 0;
   background-color: #ffdb63;
   display: flex;
   justify-content: center;
