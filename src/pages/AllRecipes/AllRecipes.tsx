@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./AllRecipes.css";
 import supabaseClient from "../../lib/supabaseClients";
 import { Link } from "react-router-dom";
+import { useSearchContext } from "../../Context/SearchContext"; // Importiere den Suchkontext
 
 type Recipe = {
   id: string;
@@ -18,20 +19,27 @@ type Recipe = {
 const AllRecipes = () => {
   const [allRecipes, setAllRecipes] = useState<Recipe[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const { searchTerm } = useSearchContext(); // Verwende den Suchkontext
 
   useEffect(() => {
     const fetchAllRecipes = async () => {
-      const { data, error } = await supabaseClient.from("recipes").select("*");
+      let selectQuery = supabaseClient.from("recipes").select("*");
+
+      if (searchTerm) {
+        selectQuery = selectQuery.ilike("name", `%${searchTerm}%`);
+      }
+
+      const { data, error } = await selectQuery;
 
       if (error) {
         console.error(error);
       } else {
         setAllRecipes(data || []);
       }
-      setLoading(false); // Set loading to false after fetching
+      setLoading(false);
     };
     fetchAllRecipes();
-  }, []);
+  }, [searchTerm]);
 
   return (
     <section className="allRecipes">

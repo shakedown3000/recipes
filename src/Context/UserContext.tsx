@@ -27,6 +27,7 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
       if (sessionResponse.data.session) {
         setUser(sessionResponse.data.session.user);
       }
+      setLoading(false);
     };
     fetchSession();
   }, []);

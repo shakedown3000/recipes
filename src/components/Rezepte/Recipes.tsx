@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import supabaseClient from "../../lib/supabaseClients";
 import "./Recipes.css";
 import { Link } from "react-router-dom";
+import { useSearchContext } from "../../Context/SearchContext"; // Importiere den Suchkontext
 
 type Recipe = {
   id: string;
@@ -17,14 +18,18 @@ type Recipe = {
 
 const Recipes = () => {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
-  const [searchTerm, setSearchTerm] = useState<string>("");
+  const { searchTerm } = useSearchContext();
 
   useEffect(() => {
     const fetchRecipes = async () => {
-      let selectQuery = supabaseClient.from("recipes").select("*");
+      let selectQuery = supabaseClient
+        .from("recipes")
+        .select("*")
+        .order("rating", { ascending: false })
+        .limit(3);
 
       if (searchTerm) {
-        selectQuery = selectQuery.ilike("title", `%${searchTerm}%`);
+        selectQuery = selectQuery.ilike("name", `%${searchTerm}%`);
       }
 
       const result = await selectQuery;
@@ -42,21 +47,9 @@ const Recipes = () => {
 
   return (
     <div className="recipe-container">
-      <div className="wrapper-searchbar">
-        <label>
-          <input
-            type="text"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            placeholder="Suche nach Titel"
-          />
-        </label>
-      </div>
-
       <main className="recipe-list-container">
         {!recipes && <p>Loading...</p>}
-        {recipes &&
-          recipes.length > 0 &&
+        {recipes.length > 0 &&
           recipes.map((recipe) => (
             <div className="recipe-item" key={recipe.id}>
               <div className="image-container">

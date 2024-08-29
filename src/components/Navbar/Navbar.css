@@ -29,3 +29,12 @@
   align-items: center;
   justify-content: space-between;
 }
+
+.searchbar-container {
+  margin-left: 20px;
+}
+
+.searchbar-container input {
+  padding: 5px;
+  font-size: 14px;
+}
